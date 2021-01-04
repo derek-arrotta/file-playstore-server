@@ -9,16 +9,17 @@ const apps = require('./app-data.js');
 
 app.get('/apps', (req, res) => {
   // ALL OUR CODE HERE
-  const { search = ""} = req.query;
+  const { sort } = req.query;
   
-  let results = apps
-      .filter(app =>
-        app
-          .app
-          .toLowerCase()
-          .includes(search.toLowerCase()));
+  if (sort) {
+    if (!['rating', 'app'].includes(sort)) {
+      return res 
+        .status(400)
+        .send('Sort must be one of title or rank');
+    }
+  }
 
-  res.json(results);
+  res.json(apps);
 });
 
 app.listen(8000, () => {
