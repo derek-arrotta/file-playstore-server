@@ -20,7 +20,7 @@ app.get('/apps', (req, res) => {
   }
 
   if (genre) {
-    if (!['Action', 'Puzzle', 'Strategy', 'Casual', 'Arcade', 'Card'].includes(sort)) {
+    if (!['Action', 'Puzzle', 'Strategy', 'Casual', 'Arcade', 'Card'].includes(genre)) {
       return res 
         .status(400)
         .send('Genre must be one of Action, Puzzle, Strategy, Casual, Arcade, or Card');
@@ -28,12 +28,17 @@ app.get('/apps', (req, res) => {
   }
 
   if (sort) {
-    apps.sort((a, b) => {
+    results = apps.sort((a, b) => {
       return a[sort] > b[sort] ? 1 : a[sort] < b[sort] ? -1 : 0;
     });
   }
 
-  res.json(apps);
+  if (genre) {
+    results = apps.filter(app => 
+                        app.Genres.includes(genre)); 
+  }
+
+  res.json(results);
 });
 
 app.listen(8000, () => {
