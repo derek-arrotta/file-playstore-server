@@ -9,13 +9,21 @@ const apps = require('./app-data.js');
 
 app.get('/apps', (req, res) => {
   // ALL OUR CODE HERE
-  const { sort } = req.query;
+  const { sort, genre } = req.query;
   
   if (sort) {
     if (!['Rating', 'App'].includes(sort)) {
       return res 
         .status(400)
         .send('Sort must be one of Rating or App');
+    }
+  }
+
+  if (genre) {
+    if (!['Action', 'Puzzle', 'Strategy', 'Casual', 'Arcade', 'Card'].includes(sort)) {
+      return res 
+        .status(400)
+        .send('Genre must be one of Action, Puzzle, Strategy, Casual, Arcade, or Card');
     }
   }
 
