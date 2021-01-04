@@ -19,6 +19,12 @@ app.get('/apps', (req, res) => {
     }
   }
 
+  if (sort) {
+    apps.sort((a, b) => {
+      return a[sort] > b[sort] ? 1 : a[sort] < b[sort] ? -1 : 0;
+    });
+  }
+
   res.json(apps);
 });
 
