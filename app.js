@@ -5,6 +5,8 @@ const app = express();
 
 app.use(morgan('common')); // let's see what 'common' format looks like
 
+const books = require('./app-data.js');
+
 app.get('/apps', (req, res) => {
   // ALL OUR CODE HERE
 });
