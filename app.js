@@ -9,7 +9,16 @@ const apps = require('./app-data.js');
 
 app.get('/apps', (req, res) => {
   // ALL OUR CODE HERE
-  res.json(apps);
+  const { search = ""} = req.query;
+  
+  let results = books
+      .filter(book =>
+        book
+          .title
+          .toLowerCase()
+          .includes(search.toLowerCase()));
+
+  res.json(results);
 });
 
 app.listen(8000, () => {
