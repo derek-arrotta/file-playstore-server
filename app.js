@@ -11,9 +11,9 @@ app.get('/apps', (req, res) => {
   // ALL OUR CODE HERE
   const { search = ""} = req.query;
   
-  let results = books
-      .filter(book =>
-        book
+  let results = apps
+      .filter(app =>
+        app
           .title
           .toLowerCase()
           .includes(search.toLowerCase()));
