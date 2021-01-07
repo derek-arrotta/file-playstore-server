@@ -2,7 +2,7 @@
   "name": "file-playstore-server",
   "version": "1.0.0",
   "description": "thinkful node/express server assignment",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "mocha",
     "start": "node server.js",

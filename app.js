@@ -26,6 +26,8 @@ app.get('/apps', (req, res) => {
     }
   }
 
+  let results = apps
+
   if (sort) {
     results = apps.sort((a, b) => {
       return a[sort] > b[sort] ? 1 : a[sort] < b[sort] ? -1 : 0;
