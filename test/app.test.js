@@ -3,7 +3,7 @@ const supertest = require("supertest");
 const app = require("../app");
 
 describe("GET /apps", () => {
-  it.only("should return an array of apps", () => {
+  it.only("should return an array of app objects", () => {
     return supertest(app)
       .get("/apps")
       .expect(200)

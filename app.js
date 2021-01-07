@@ -1,10 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
-
 const app = express();
-
 app.use(morgan('common')); // let's see what 'common' format looks like
-
+const cors = require('cors');
+app.use(cors());
 const apps = require('./app-data.js');
 
 app.get('/apps', (req, res) => {
